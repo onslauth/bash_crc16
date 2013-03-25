@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
 
 # Original javascript implementation can be found at: http://www.zorc.breitbandkatze.de/crc.html
+# http://www.ross.net/crc/download/crc_v3.txt
+# http://wiki.osdev.org/CRC32
 
 function reflect( )
 {
@@ -86,7 +88,7 @@ function crc16_8005( )
 			fi
 			char=$(( char << 1 ))
 	
-			for (( k=0; k<8; k++ ))
+			for (( k=6; k<8; k++ ))
 			do
 				crc[$k]=$(( ( (crc[k] << 1) | (crc[k+1] >> 7) ) & mask[k] ))
 				if [ $bit -ne 0 ]
