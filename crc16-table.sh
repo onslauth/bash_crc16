@@ -2,6 +2,9 @@
 
 # For testing purposes, an input of "123456789" should produce a crc of 0xBB3D
 
+function calc_crc16( )
+{
+
 poly=0x8005
 
 declare -a crc_16_table=(     
@@ -51,7 +54,10 @@ do
 	crc=$(( crc_16_table[ ( crc ^ buf ) & 0xff ] ^ ( crc >> 8 ) ))
 done
 
-echo "crc: $crc"
-printf "crc: 0x%04X\n" $crc
+printf "%04x" $crc
 
+}
+
+crc16=$( calc_crc16 "$1" )
+echo "crc16: $crc16"
 
